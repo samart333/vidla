@@ -245,7 +245,7 @@
     <Compile Include="ViewModels\CustomerIndexViewModel.cs" />
     <Compile Include="ViewModels\MoviesDetailsViewModel.cs" />
     <Compile Include="ViewModels\MoviesIndexViewModel.cs" />
-    <Compile Include="ViewModels\NewCustomerViewModel.cs" />
+    <Compile Include="ViewModels\CustomerFormViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\aspnet-Vidla-20191009054205.mdf" />

@@ -6,7 +6,7 @@ using Vidla.Models;
 
 namespace Vidla.ViewModels
 {
-    public class NewCustomerViewModel
+    public class CustomerFormViewModel
     {
         public IEnumerable<MembershipType> MemberbershipTypes { get; set; }
         public Customer Customer { get; set; }

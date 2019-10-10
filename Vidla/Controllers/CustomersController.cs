@@ -27,26 +27,27 @@ namespace Vidla.Controllers
         public ActionResult New()
         {
             var membershipTypes = _context.MembershipTypes.ToList();
-            var viewModel = new NewCustomerViewModel
+            var viewModel = new CustomerFormViewModel
             {
                 MemberbershipTypes = membershipTypes
             };
 
-            return View(viewModel);
+            return View("CustomerForm", viewModel);
         }
 
         // GET: Customers/Create
         [HttpPost]
-        public ActionResult Create(Customer customer)
+        public ActionResult Save(Customer customer)
         {
-            var customerInDb = _context.Customers.SingleOrDefault(c => c.Id == customer.Id);
 
-            if(customerInDb.Id == 0)
+            if(customer.Id == 0)
             {
-                _context.Customers.Add(customerInDb);
+                _context.Customers.Add(customer);
             }
             else
             {
+                var customerInDb = _context.Customers.SingleOrDefault(c => c.Id == customer.Id);
+
                 customerInDb.Name = customer.Name;
                 customerInDb.BirthDate = customer.BirthDate;
                 customerInDb.IsSubscribedToNewsLetter = customer.IsSubscribedToNewsLetter;
@@ -62,14 +63,17 @@ namespace Vidla.Controllers
         // GET: Customers/Edit
         public ActionResult Edit(int id)
         {
-            var SelectedCustomer = _context.Customers.SingleOrDefault(c => c.Id == id);
             var membershipTypes = _context.MembershipTypes.ToList();
 
+            var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
 
-            var viewModel = new NewCustomerViewModel
+            if (customer == null)
+                return HttpNotFound();
+
+            var viewModel = new CustomerFormViewModel
             {
                     MemberbershipTypes = membershipTypes,
-                    Customer = SelectedCustomer
+                    Customer = customer
                 };
 
             return View("CustomerForm", viewModel);
@@ -98,6 +102,7 @@ namespace Vidla.Controllers
             {
                 return View("Error");
             }
+
             return View(viewModel);
         }
 
