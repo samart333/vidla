@@ -18,7 +18,66 @@ namespace Vidla.Controllers
             _context = new ApplicationDbContext();
         }
 
-        // GET: Customers
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
+
+        // GET: Customers/New
+        public ActionResult New()
+        {
+            var membershipTypes = _context.MembershipTypes.ToList();
+            var viewModel = new NewCustomerViewModel
+            {
+                MemberbershipTypes = membershipTypes
+            };
+
+            return View(viewModel);
+        }
+
+        // GET: Customers/Create
+        [HttpPost]
+        public ActionResult Create(Customer customer)
+        {
+            var customerInDb = _context.Customers.SingleOrDefault(c => c.Id == customer.Id);
+
+            if(customerInDb.Id == 0)
+            {
+                _context.Customers.Add(customerInDb);
+            }
+            else
+            {
+                customerInDb.Name = customer.Name;
+                customerInDb.BirthDate = customer.BirthDate;
+                customerInDb.IsSubscribedToNewsLetter = customer.IsSubscribedToNewsLetter;
+                customerInDb.MembershipTypeId = customer.MembershipTypeId;
+            }
+
+            _context.SaveChanges();
+
+
+            return RedirectToAction("Index", "Customers");
+        }
+
+        // GET: Customers/Edit
+        public ActionResult Edit(int id)
+        {
+            var SelectedCustomer = _context.Customers.SingleOrDefault(c => c.Id == id);
+            var membershipTypes = _context.MembershipTypes.ToList();
+
+
+            var viewModel = new NewCustomerViewModel
+            {
+                    MemberbershipTypes = membershipTypes,
+                    Customer = SelectedCustomer
+                };
+
+            return View("CustomerForm", viewModel);
+            
+        }
+
+
+        // GET: Customers/Index
         public ActionResult Index()
         {
             var viewModel = new CustomerIndexViewModel();
@@ -29,6 +88,7 @@ namespace Vidla.Controllers
             return View(viewModel);
         }
 
+        // GET: Customers/Details
         public ActionResult Details(int id)
         {
             var viewModel = new CustomerDetailsViewModel();
