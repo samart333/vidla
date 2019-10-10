@@ -1,0 +1,15 @@
+﻿@model Vidla.ViewModels.CustomerDetailsViewModel
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>@Model.Customer.Name</h2>
+
+<ul>
+    <li>Membership Type: @Model.Customer.MembershipType.Name</li>
+    @if (Model.Customer.BirthDate != null)
+    {
+        <li>Birthdate: @Model.Customer.BirthDate</li>
+    }
+</ul>
+
