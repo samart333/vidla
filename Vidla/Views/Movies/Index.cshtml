@@ -5,6 +5,8 @@
 
 <h2>Movies</h2>
 
+<a href="@Url.Action("New", "Movies")" class="btn btn-primary">New Movie</a>
+
 <table class="table table-striped table-hover ">
     <thead>
         <tr>
@@ -18,7 +20,7 @@
         {
         <tr>
             <td>
-                <a href="@Url.Action("Details","Movies", new { id = movie.Id })">@movie.Name</a>
+                <a href="@Url.Action("Edit","Movies", new { id = movie.Id })">@movie.Name</a>
             </td>
             <td>
                 @movie.Genre.Name

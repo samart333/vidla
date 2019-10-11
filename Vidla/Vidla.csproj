@@ -231,6 +231,14 @@
     <Compile Include="Migrations\201910101728336_ChangeNameToMembershipType.Designer.cs">
       <DependentUpon>201910101728336_ChangeNameToMembershipType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910110239010_RemoveAnnotationsInMovie.cs" />
+    <Compile Include="Migrations\201910110239010_RemoveAnnotationsInMovie.Designer.cs">
+      <DependentUpon>201910110239010_RemoveAnnotationsInMovie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910110302291_MakeReleaseDateAndDateAddedNullable.cs" />
+    <Compile Include="Migrations\201910110302291_MakeReleaseDateAndDateAddedNullable.Designer.cs">
+      <DependentUpon>201910110302291_MakeReleaseDateAndDateAddedNullable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -243,6 +251,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CustomerDetailsViewModel.cs" />
     <Compile Include="ViewModels\CustomerIndexViewModel.cs" />
+    <Compile Include="ViewModels\MovieFormViewModel.cs" />
     <Compile Include="ViewModels\MoviesDetailsViewModel.cs" />
     <Compile Include="ViewModels\MoviesIndexViewModel.cs" />
     <Compile Include="ViewModels\CustomerFormViewModel.cs" />
@@ -312,6 +321,7 @@
     <Content Include="Views\Movies\Index.cshtml" />
     <Content Include="Views\Movies\Details.cshtml" />
     <Content Include="Views\Customers\CustomerForm.cshtml" />
+    <Content Include="Views\Movies\MovieForm.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -369,6 +379,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910101728336_ChangeNameToMembershipType.resx">
       <DependentUpon>201910101728336_ChangeNameToMembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910110239010_RemoveAnnotationsInMovie.resx">
+      <DependentUpon>201910110239010_RemoveAnnotationsInMovie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910110302291_MakeReleaseDateAndDateAddedNullable.resx">
+      <DependentUpon>201910110302291_MakeReleaseDateAndDateAddedNullable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
