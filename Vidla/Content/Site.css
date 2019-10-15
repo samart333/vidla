@@ -7,6 +7,7 @@
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    border: 1px solid red;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -22,3 +23,13 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.field-validation-error {
+    color: red;
+}
+.input-validation-error{
+    border: 2px solid red;
+}
+
+
+

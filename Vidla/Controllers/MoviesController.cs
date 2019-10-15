@@ -11,6 +11,7 @@ namespace Vidla.Controllers
 {
     public class MoviesController : Controller
     {
+
         public ApplicationDbContext _context { get; set; }
 
         public MoviesController()
@@ -29,7 +30,8 @@ namespace Vidla.Controllers
             var genres = _context.Genres.ToList();
             var viewModel = new MovieFormViewModel
             {
-                Genres = genres
+                Genres = genres,
+                Movie = new Movie { }
             };
 
             return View("MovieForm", viewModel);
@@ -49,9 +51,22 @@ namespace Vidla.Controllers
             return View("MovieForm", viewModel);
         }
 
+        [HttpPost]
         public ActionResult Save(Movie movie)
         {
-            if(movie.Id == 0)
+
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new MovieFormViewModel
+                {
+                     Movie = movie,
+                    Genres = _context.Genres.ToList()
+                };
+                return View("MovieForm", viewModel);
+            }
+
+
+            if (movie.Id == 0)
             {
                 _context.Movies.Add(movie);
             }
@@ -72,7 +87,7 @@ namespace Vidla.Controllers
 
 
 
-        // GET: Movies
+        // GET: Movies/Index
         public ActionResult Index()
         {
             var viewModel = new MoviesIndexViewModel();

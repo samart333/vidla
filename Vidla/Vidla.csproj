@@ -239,6 +239,22 @@
     <Compile Include="Migrations\201910110302291_MakeReleaseDateAndDateAddedNullable.Designer.cs">
       <DependentUpon>201910110302291_MakeReleaseDateAndDateAddedNullable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910141549101_AddAnnotationToNameInMembershipType.cs" />
+    <Compile Include="Migrations\201910141549101_AddAnnotationToNameInMembershipType.Designer.cs">
+      <DependentUpon>201910141549101_AddAnnotationToNameInMembershipType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910141955012_AddAnnotationToNameInMovie.cs" />
+    <Compile Include="Migrations\201910141955012_AddAnnotationToNameInMovie.Designer.cs">
+      <DependentUpon>201910141955012_AddAnnotationToNameInMovie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910142141382_AddAnnotationToReleaseDateInMovie.cs" />
+    <Compile Include="Migrations\201910142141382_AddAnnotationToReleaseDateInMovie.Designer.cs">
+      <DependentUpon>201910142141382_AddAnnotationToReleaseDateInMovie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910150323300_AddAnnotationToReleaseDateInMovie1.cs" />
+    <Compile Include="Migrations\201910150323300_AddAnnotationToReleaseDateInMovie1.Designer.cs">
+      <DependentUpon>201910150323300_AddAnnotationToReleaseDateInMovie1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -246,7 +262,9 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
+    <Compile Include="Models\Min18YearsIfAMember.cs" />
     <Compile Include="Models\Movie.cs" />
+    <Compile Include="Models\NameIfAction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CustomerDetailsViewModel.cs" />
@@ -385,6 +403,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910110302291_MakeReleaseDateAndDateAddedNullable.resx">
       <DependentUpon>201910110302291_MakeReleaseDateAndDateAddedNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910141549101_AddAnnotationToNameInMembershipType.resx">
+      <DependentUpon>201910141549101_AddAnnotationToNameInMembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910141955012_AddAnnotationToNameInMovie.resx">
+      <DependentUpon>201910141955012_AddAnnotationToNameInMovie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910142141382_AddAnnotationToReleaseDateInMovie.resx">
+      <DependentUpon>201910142141382_AddAnnotationToReleaseDateInMovie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910150323300_AddAnnotationToReleaseDateInMovie1.resx">
+      <DependentUpon>201910150323300_AddAnnotationToReleaseDateInMovie1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

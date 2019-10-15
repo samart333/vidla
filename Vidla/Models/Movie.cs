@@ -8,12 +8,19 @@ namespace Vidla.Models
 {
     public class Movie
     {
+        
         public int Id { get; set; }
+
+        [Required]
         public string Name { get; set; }
 
+        
         public int GenreId { get; set; }
+
+        
         public Genre Genre { get; set; }
 
+        [LessThan20Years]
         public DateTime? ReleaseDate { get; set; }
 
         public DateTime? DateAdded { get; set; }

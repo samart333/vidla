@@ -26,21 +26,33 @@ namespace Vidla.Controllers
         // GET: Customers/New
         public ActionResult New()
         {
+
             var membershipTypes = _context.MembershipTypes.ToList();
             var viewModel = new CustomerFormViewModel
             {
+                Customer = new Customer(),
                 MemberbershipTypes = membershipTypes
             };
 
             return View("CustomerForm", viewModel);
         }
 
-        // GET: Customers/Create
+        // GET: Customers/Save
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Customer customer)
         {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new CustomerFormViewModel
+                {
+                    Customer = customer,
+                    MemberbershipTypes = _context.MembershipTypes.ToList()
+                };
+                return View("CustomerForm", viewModel);
+            }
 
-            if(customer.Id == 0)
+            if (customer.Id == 0)
             {
                 _context.Customers.Add(customer);
             }
