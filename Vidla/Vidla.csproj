@@ -255,6 +255,22 @@
     <Compile Include="Migrations\201910150323300_AddAnnotationToReleaseDateInMovie1.Designer.cs">
       <DependentUpon>201910150323300_AddAnnotationToReleaseDateInMovie1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910151732589_AddAnnotationToReleaseDateInMovie2.cs" />
+    <Compile Include="Migrations\201910151732589_AddAnnotationToReleaseDateInMovie2.Designer.cs">
+      <DependentUpon>201910151732589_AddAnnotationToReleaseDateInMovie2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910151743452_AddAnnotationToNumberInStockInMovie.cs" />
+    <Compile Include="Migrations\201910151743452_AddAnnotationToNumberInStockInMovie.Designer.cs">
+      <DependentUpon>201910151743452_AddAnnotationToNumberInStockInMovie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910151816588_AddAnnotationToGenreIdInMovie.cs" />
+    <Compile Include="Migrations\201910151816588_AddAnnotationToGenreIdInMovie.Designer.cs">
+      <DependentUpon>201910151816588_AddAnnotationToGenreIdInMovie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910151951064_AddMoreAnnotationsToMovie.cs" />
+    <Compile Include="Migrations\201910151951064_AddMoreAnnotationsToMovie.Designer.cs">
+      <DependentUpon>201910151951064_AddMoreAnnotationsToMovie.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -415,6 +431,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910150323300_AddAnnotationToReleaseDateInMovie1.resx">
       <DependentUpon>201910150323300_AddAnnotationToReleaseDateInMovie1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910151732589_AddAnnotationToReleaseDateInMovie2.resx">
+      <DependentUpon>201910151732589_AddAnnotationToReleaseDateInMovie2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910151743452_AddAnnotationToNumberInStockInMovie.resx">
+      <DependentUpon>201910151743452_AddAnnotationToNumberInStockInMovie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910151816588_AddAnnotationToGenreIdInMovie.resx">
+      <DependentUpon>201910151816588_AddAnnotationToGenreIdInMovie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910151951064_AddMoreAnnotationsToMovie.resx">
+      <DependentUpon>201910151951064_AddMoreAnnotationsToMovie.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

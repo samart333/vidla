@@ -23,15 +23,16 @@ else
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(m => m.Customer.MembershipTypeId)
-        @Html.DropDownListFor(m => m.Customer.MembershipTypeId, new SelectList(Model.MemberbershipTypes, "Id", "Name"), "Select Membership Type", new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Customer.MembershipTypeId)
-    </div>
-
-    <div class="form-group">
         @Html.LabelFor(m => m.Customer.BirthDate)
         @Html.TextBoxFor(m => m.Customer.BirthDate, "{0:d MMM yyy}", new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.Customer.BirthDate)
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Customer.MembershipTypeId)
+        @Html.DropDownListFor(m => m.Customer.MembershipTypeId, new SelectList(Model.MemberbershipTypes, "Id", "Name"), "Select Membership Type", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Customer.MembershipTypeId)
     </div>
 
 
@@ -43,7 +44,7 @@ else
     </div>
 
     @Html.HiddenFor(m => m.Customer.Id)
-    @Html.AntiForgeryToken() 
+    @Html.AntiForgeryToken()
 
     <button type="submit" class="btn btn-primary">Save</button>
 
@@ -51,5 +52,5 @@ else
 
 @section scripts
 {
-      @Scripts.Render("~/bundles/jqueryval") 
+    @Scripts.Render("~/bundles/jqueryval")
 }

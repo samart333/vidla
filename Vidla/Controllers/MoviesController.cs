@@ -50,7 +50,7 @@ namespace Vidla.Controllers
 
             return View("MovieForm", viewModel);
         }
-
+        [ValidateAntiForgeryToken]
         [HttpPost]
         public ActionResult Save(Movie movie)
         {
