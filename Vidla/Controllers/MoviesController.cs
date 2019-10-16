@@ -28,10 +28,10 @@ namespace Vidla.Controllers
         public ActionResult New()
         {
             var genres = _context.Genres.ToList();
+
             var viewModel = new MovieFormViewModel
             {
                 Genres = genres,
-                Movie = new Movie { }
             };
 
             return View("MovieForm", viewModel);
@@ -42,10 +42,9 @@ namespace Vidla.Controllers
             var genres = _context.Genres.ToList();
             var movie = _context.Movies.SingleOrDefault(c => c.Id == id);
 
-            var viewModel = new MovieFormViewModel
+            var viewModel = new MovieFormViewModel(movie)
             {
                 Genres = genres,
-                Movie = movie
             };
 
             return View("MovieForm", viewModel);
@@ -57,9 +56,8 @@ namespace Vidla.Controllers
 
             if (!ModelState.IsValid)
             {
-                var viewModel = new MovieFormViewModel
+                var viewModel = new MovieFormViewModel(movie)
                 {
-                     Movie = movie,
                     Genres = _context.Genres.ToList()
                 };
                 return View("MovieForm", viewModel);
