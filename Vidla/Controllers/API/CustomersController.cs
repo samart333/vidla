@@ -1,9 +1,11 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Vidla.Dtos;
 using Vidla.Models;
 
 namespace Vidla.Controllers.API
@@ -21,45 +23,48 @@ namespace Vidla.Controllers.API
 
 
         ////GET/api/customers
-        public IEnumerable<Customer> GetCustomers()
+        public IEnumerable<CustomerDto> GetCustomers()
         {
-            _context.Customers.ToList();
 
-            return _context.Customers.ToList();
+            return _context.Customers.ToList().Select(Mapper.Map<Customer, CustomerDto>);
         }
 
 
 
         ///GET/api/customers/1
-        public Customer GetCustomer(int id)
+        public CustomerDto GetCustomer(int id)
         {
             var customer = _context.Customers.SingleOrDefault(m => m.Id == id);
 
             if (customer == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
 
-            return customer;
+            return Mapper.Map<Customer, CustomerDto>(customer);
         }
 
 
 
         //POST/api/customers
         [HttpPost]
-        public Customer CreateCustomer(Customer customer)
+        public CustomerDto CreateCustomer(CustomerDto customerDto)
         {
             if (!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
+
+            var customer = Mapper.Map<CustomerDto, Customer>(customerDto);
 
             _context.Customers.Add(customer);
 
             _context.SaveChanges();
 
-            return customer;
+            customerDto.Id = customer.Id;
+
+            return customerDto;
         }
 
         ///PUT/api/customers/1
         [HttpPut]
-        public void UpdateCustomer(Customer customer, int id)
+        public void UpdateCustomer(CustomerDto customerDto, int id)
         {
             if (!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
@@ -69,10 +74,13 @@ namespace Vidla.Controllers.API
             if (customerInDb == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
 
-            customerInDb.Name = customer.Name;
-            customerInDb.MembershipTypeId = customer.MembershipTypeId;
-            customerInDb.BirthDate = customer.BirthDate;
-            customerInDb.IsSubscribedToNewsLetter = customer.IsSubscribedToNewsLetter;
+            var ab = new Customer();
+
+            Mapper.Map<CustomerDto, Customer>(customerDto, customerInDb);
+            customerInDb.Name = customerDto.Name;
+            customerInDb.MembershipTypeId = customerDto.MembershipTypeId;
+            customerInDb.BirthDate = customerDto.BirthDate;
+            customerInDb.IsSubscribedToNewsLetter = customerDto.IsSubscribedToNewsLetter;
 
             _context.SaveChanges();
         }
