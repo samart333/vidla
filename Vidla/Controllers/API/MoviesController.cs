@@ -20,7 +20,7 @@ namespace Vidla.Controllers.API
         }
 
         //GET/api/movies
-        public IHttpActionResult GetCustomers() 
+        public IHttpActionResult GetMovies() 
         {
             var movies = _context.Movies.ToList().Select(Mapper.Map<Movie, MovieDto>);
 
@@ -29,7 +29,7 @@ namespace Vidla.Controllers.API
 
 
         //GET/api/movies/id
-        public IHttpActionResult GetCustomer(int id)
+        public IHttpActionResult GetMovie(int id)
         {
             var movie = _context.Movies.SingleOrDefault(c => c.Id == id);
 
@@ -38,11 +38,13 @@ namespace Vidla.Controllers.API
             if (movieDto == null)
                 return NotFound();
 
-            return Created(new Uri(Request.RequestUri + "/" + movie.Id), movie);
+            //return Created(new Uri(Request.RequestUri + "/" + movie.Id), movie);
+            return Ok(Mapper.Map<Movie, MovieDto>(movie));
         }
 
         
         //POST/api/movies
+        [HttpPost]
         public IHttpActionResult CreateMovie(MovieDto movieDto)
         {
             if (!ModelState.IsValid)
@@ -56,6 +58,7 @@ namespace Vidla.Controllers.API
 
             movieDto.Id = movie.Id;
 
+
             return Created(new Uri(Request.RequestUri + "/" + movie.Id), movieDto);
 
         }
@@ -67,20 +70,26 @@ namespace Vidla.Controllers.API
             if (!ModelState.IsValid)
                 return BadRequest();
 
-            var movie = _context.Movies.SingleOrDefault(c => c.Id == id);
+            var movieInDb = _context.Movies.SingleOrDefault(c => c.Id == id);
 
-            Mapper.Map<MovieDto, Movie>(movieDto, movie);
+            if (movieInDb == null)
+                return BadRequest();
+
+            Mapper.Map<MovieDto, Movie>(movieDto, movieInDb);
+
+            
 
             _context.SaveChanges();
 
 
-            return Created(new Uri(Request.RequestUri + "/" + movie.Id), movieDto);
+            //return Created(new Uri(Request.RequestUri + "/" + movieInDb.Id), movieDto);
+            return Ok();
 
         }
 
         //DELETE/api/Movies/id
 
-        public void DeleteMovie(int id)
+        public IHttpActionResult DeleteMovie(int id)
         {
             var movie = _context.Movies.SingleOrDefault(c => c.Id == id);
 
@@ -90,6 +99,9 @@ namespace Vidla.Controllers.API
             _context.Movies.Remove(movie);
 
             _context.SaveChanges();
+
+            return Ok();
+
         }
 
 

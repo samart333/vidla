@@ -23,10 +23,12 @@ namespace Vidla.Controllers.API
 
 
         ////GET/api/customers
-        public IEnumerable<CustomerDto> GetCustomers()
+        public IHttpActionResult GetCustomers()
         {
+            var customerDtos = _context.Customers.ToList().Select(Mapper.Map<Customer, CustomerDto>);
 
-            return _context.Customers.ToList().Select(Mapper.Map<Customer, CustomerDto>);
+            //return _context.Customers.ToList().Select(Mapper.Map<Customer, CustomerDto>);
+            return Ok(customerDtos);
         }
 
 
@@ -64,16 +66,15 @@ namespace Vidla.Controllers.API
 
         ///PUT/api/customers/1
         [HttpPut]
-        public void UpdateCustomer(CustomerDto customerDto, int id)
+        public IHttpActionResult UpdateCustomer(CustomerDto customerDto, int id)
         {
             if (!ModelState.IsValid)
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+                return BadRequest();
 
             var customerInDb = _context.Customers.SingleOrDefault(c => c.Id == id);
 
             if (customerInDb == null)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
-
+                return NotFound();
             
 
             Mapper.Map<CustomerDto, Customer>(customerDto, customerInDb);
@@ -83,15 +84,18 @@ namespace Vidla.Controllers.API
             //customerInDb.IsSubscribedToNewsLetter = customerDto.IsSubscribedToNewsLetter;
 
             _context.SaveChanges();
+
+            return Ok();
         }
 
         //DELETE/api/customers/1    
-        public void DeleteCustomer(int id)
+        public IHttpActionResult DeleteCustomer(int id)
         {
             var customerInDb = _context.Customers.SingleOrDefault(c => c.Id == id);
 
             if (customerInDb == null)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+                //throw new HttpResponseException(HttpStatusCode.NotFound);
+                return NotFound();
 
 
             _context.Customers.Remove(customerInDb);
@@ -99,7 +103,7 @@ namespace Vidla.Controllers.API
 
             _context.SaveChanges();
 
-
+            return Ok();
         }
 
 
