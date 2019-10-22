@@ -20,6 +20,8 @@ namespace Vidla.Dtos
         
         public byte MembershipTypeId { get; set; }
 
+        public MembershipTypeDto MembershipType { get; set; }
+
         
 
         [Display(Name = "Date of Birth")]

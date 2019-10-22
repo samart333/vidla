@@ -96,12 +96,8 @@ namespace Vidla.Controllers
         // GET: Customers/Index
         public ActionResult Index()
         {
-            var viewModel = new CustomerIndexViewModel();
 
-            viewModel.Customers = _context.Customers.Include(x => x.MembershipType).ToList();
-
-
-            return View(viewModel);
+            return View();
         }
 
         // GET: Customers/Details
