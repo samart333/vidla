@@ -18,6 +18,8 @@ namespace Vidla.Dtos
         [Required]
         public int GenreId { get; set; }
 
+        public GenreDto Genre { get; set; }
+
 
         [Display(Name = "Release Date")]
         [Required]

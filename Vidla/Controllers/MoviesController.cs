@@ -89,7 +89,12 @@ namespace Vidla.Controllers
         public ActionResult Index()
         {
 
-            return View();
+
+            //var movies = new MoviesIndexViewModel
+            //{
+            //    Movies = _context.Movies.Include(c => c.Genre).ToList()
+            //};
+            return View(/*movies*/);
         }
 
         public ActionResult Details(int id)
