@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -16,15 +17,18 @@ namespace Vidla.Controllers.API
 
         public MoviesController()
         {
-            _context = new ApplicationDbContext { };
+            _context = new ApplicationDbContext ();
         }
 
         //GET/api/movies
         public IHttpActionResult GetMovies() 
         {
-            var movies = _context.Movies.ToList().Select(Mapper.Map<Movie, MovieDto>);
+            var movies = _context.Movies
+                            .Include(c => c.Genre)
+                            .ToList()
+                            .Select(Mapper.Map<Movie, MovieDto>);
 
-            return Created(new Uri(Request.RequestUri + "/"), movies);
+            return Ok(movies);
         }
 
 
