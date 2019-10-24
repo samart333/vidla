@@ -92,7 +92,7 @@ namespace Vidla.Controllers.API
         }
 
         //DELETE/api/Movies/id
-
+        [HttpDelete]
         public IHttpActionResult DeleteMovie(int id)
         {
             var movie = _context.Movies.SingleOrDefault(c => c.Id == id);

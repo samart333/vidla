@@ -47,7 +47,7 @@
                     {
                         data: "name",
                         render: function (data, type, movie) {
-                            return "<a href='/customers/edit/" + movie.id + "'>" + movie.name + "</a>";
+                            return "<a href='/moviess/edit/" + movie.id + "'>" + movie.name + "</a>";
                         }
                     },
                     {
@@ -64,16 +64,25 @@
                 ]
         });
 
-            
-            $("#movies .js-delete").on("click", function () {
 
+            $("#movies").on("click", ".js-delete", function () {
                 var button = $(this);
+                var movieId = $(button).data("movie-id");
 
-               
-                
-                
-                button.confirm("are you sure you want to delete this?");
-
+                console.log(button)
+                var confirmed = confirm("are you sure you want to delete this?");
+                console.log(confirmed)
+                if (confirmed == true) {
+                    console.log("ho")
+                    $.ajax({
+                        url: "/api/movies/" + movieId,
+                        method: "DELETE",
+                        success: function () {
+                            table.row(button.parents("tr").remove();
+                        }
+                    })
+                }
+              
             });
 
            
