@@ -291,6 +291,10 @@
     <Compile Include="Migrations\201910151951064_AddMoreAnnotationsToMovie.Designer.cs">
       <DependentUpon>201910151951064_AddMoreAnnotationsToMovie.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910242158498_SeedUsers.cs" />
+    <Compile Include="Migrations\201910242158498_SeedUsers.Designer.cs">
+      <DependentUpon>201910242158498_SeedUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -641,6 +645,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910151951064_AddMoreAnnotationsToMovie.resx">
       <DependentUpon>201910151951064_AddMoreAnnotationsToMovie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910242158498_SeedUsers.resx">
+      <DependentUpon>201910242158498_SeedUsers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
