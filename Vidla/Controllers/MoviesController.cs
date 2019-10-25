@@ -24,7 +24,7 @@ namespace Vidla.Controllers
             _context.Dispose();
         }
 
-
+        [Authorize(Roles = RoleName.CanManageMovies)]
         public ActionResult New()
         {
             var genres = _context.Genres.ToList();
@@ -88,13 +88,16 @@ namespace Vidla.Controllers
         // GET: Movies/Index
         public ActionResult Index()
         {
+            if (User.IsInRole(RoleName.CanManageMovies))
+                return View("List");
 
+            return View("List-Read-Only");
 
             //var movies = new MoviesIndexViewModel
             //{
             //    Movies = _context.Movies.Include(c => c.Genre).ToList()
             //};
-            return View(/*movies*/);
+            ///*return View*/(/*movies*/);
         }
 
         public ActionResult Details(int id)
