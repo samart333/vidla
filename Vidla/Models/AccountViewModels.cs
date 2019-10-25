@@ -5,6 +5,14 @@ namespace Vidla.Models
 {
     public class ExternalLoginConfirmationViewModel
     {
+
+
+
+
+        [Required]
+        [Display(Name = "Driving License")]
+        public string DrivingLicense { get; set; }
+
         [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
@@ -64,6 +72,13 @@ namespace Vidla.Models
 
     public class RegisterViewModel
     {
+        [Required]
+        [MaxLength (50)]
+        public string Phone { get; set; }
+        [Required]
+        [Display(Name = "Driving License")]
+        public string DrivingLicense { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]

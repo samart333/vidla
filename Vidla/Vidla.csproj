@@ -295,6 +295,14 @@
     <Compile Include="Migrations\201910242158498_SeedUsers.Designer.cs">
       <DependentUpon>201910242158498_SeedUsers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910251449531_AddDrivingLicenseToApplicationUser.cs" />
+    <Compile Include="Migrations\201910251449531_AddDrivingLicenseToApplicationUser.Designer.cs">
+      <DependentUpon>201910251449531_AddDrivingLicenseToApplicationUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910252046355_AddPhoneToApplicationUser.cs" />
+    <Compile Include="Migrations\201910252046355_AddPhoneToApplicationUser.Designer.cs">
+      <DependentUpon>201910252046355_AddPhoneToApplicationUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -650,6 +658,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910242158498_SeedUsers.resx">
       <DependentUpon>201910242158498_SeedUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910251449531_AddDrivingLicenseToApplicationUser.resx">
+      <DependentUpon>201910251449531_AddDrivingLicenseToApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910252046355_AddPhoneToApplicationUser.resx">
+      <DependentUpon>201910252046355_AddPhoneToApplicationUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
