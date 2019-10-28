@@ -5,7 +5,7 @@
 
 <h2>Movies</h2>
 
-@*<a href="@Url.Action("New", "Movies")" class="btn btn-primary">New Movie</a>*@
+<a href="@Url.Action("New", "Movies")" class="btn btn-primary">New Movie</a>
 
 <table id="movies" class="table table-striped table-hover ">
     <thead>
@@ -47,7 +47,7 @@
                     {
                         data: "name",
                         render: function (data, type, movie) {
-                            return "<a href='/moviess/edit/" + movie.id + "'>" + movie.name + "</a>";
+                            return "<a href='/movies/edit/" + movie.id + "'>" + movie.name + "</a>";
                         }
                     },
                     {

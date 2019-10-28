@@ -37,6 +37,7 @@ namespace Vidla.Controllers
             return View("MovieForm", viewModel);
         }
 
+        [Authorize(Roles = RoleName.CanManageMovies)]
         public ActionResult Edit(int id)
         {
             var genres = _context.Genres.ToList();

@@ -46,7 +46,7 @@ namespace Vidla.Controllers.API
             return Ok(Mapper.Map<Movie, MovieDto>(movie));
         }
 
-        
+        //[Authorize(Roles = RoleName.CanManageMovies)]
         //POST/api/movies
         [HttpPost]
         public IHttpActionResult CreateMovie(MovieDto movieDto)
@@ -56,17 +56,20 @@ namespace Vidla.Controllers.API
 
             var movie = Mapper.Map<MovieDto, Movie>(movieDto);
 
+            movieDto.Id = movie.Id;
+
             _context.Movies.Add(movie);
 
             _context.SaveChanges();
 
-            movieDto.Id = movie.Id;
+            
 
 
             return Created(new Uri(Request.RequestUri + "/" + movie.Id), movieDto);
 
         }
 
+        //[Authorize(Roles = RoleName.CanManageMovies)]
         //PUT/api/movies/id
         [HttpPut]
         public IHttpActionResult UpdateMovie(MovieDto movieDto, int id)
@@ -91,6 +94,7 @@ namespace Vidla.Controllers.API
 
         }
 
+        [Authorize(Roles = RoleName.CanManageMovies)]
         //DELETE/api/Movies/id
         [HttpDelete]
         public IHttpActionResult DeleteMovie(int id)
