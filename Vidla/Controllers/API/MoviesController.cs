@@ -20,6 +20,8 @@ namespace Vidla.Controllers.API
             _context = new ApplicationDbContext ();
         }
 
+     
+
         //GET/api/movies
         public IHttpActionResult GetMovies() 
         {

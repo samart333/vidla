@@ -203,10 +203,12 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
+    <Compile Include="Controllers\NewRentalsController.cs" />
     <Compile Include="Dtos\CustomerDto.cs" />
     <Compile Include="Dtos\GenreDto.cs" />
     <Compile Include="Dtos\MembershipTypeDto.cs" />
     <Compile Include="Dtos\MovieDto.cs" />
+    <Compile Include="Dtos\NewRentalDto.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -319,6 +321,14 @@
     <Compile Include="Migrations\201910252046355_AddPhoneToApplicationUser.Designer.cs">
       <DependentUpon>201910252046355_AddPhoneToApplicationUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910291901113_AddRentalTable.cs" />
+    <Compile Include="Migrations\201910291901113_AddRentalTable.Designer.cs">
+      <DependentUpon>201910291901113_AddRentalTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910291942560_AddAnnotationToRentalTable.cs" />
+    <Compile Include="Migrations\201910291942560_AddAnnotationToRentalTable.Designer.cs">
+      <DependentUpon>201910291942560_AddAnnotationToRentalTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -331,11 +341,13 @@
     <Compile Include="Models\Min18YearsIfAMember.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\NameIfAction.cs" />
+    <Compile Include="Models\Rental.cs" />
     <Compile Include="Models\RoleName.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CustomerDetailsViewModel.cs" />
     <Compile Include="ViewModels\CustomerIndexViewModel.cs" />
+    <Compile Include="ViewModels\CustomerRentalRecordViewModel.cs" />
     <Compile Include="ViewModels\ExternalLoginCofirmationViewModel.cs" />
     <Compile Include="ViewModels\MovieFormViewModel.cs" />
     <Compile Include="ViewModels\MoviesDetailsViewModel.cs" />
@@ -684,6 +696,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910252046355_AddPhoneToApplicationUser.resx">
       <DependentUpon>201910252046355_AddPhoneToApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910291901113_AddRentalTable.resx">
+      <DependentUpon>201910291901113_AddRentalTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910291942560_AddAnnotationToRentalTable.resx">
+      <DependentUpon>201910291942560_AddAnnotationToRentalTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
