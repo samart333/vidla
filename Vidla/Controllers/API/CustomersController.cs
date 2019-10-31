@@ -35,6 +35,24 @@ namespace Vidla.Controllers.API
             return Ok(customerDtos);
         }
 
+        //HOW MOSH HAS THIS CODE 
+
+        //public IHttpActionResult GetCustomers(string query = null)
+        //{
+        //    var customersQuery = _context.Customers
+        //          .Include(c => c.MembershipType);
+
+        //    if (!String.IsNullOrWhiteSpace(query))
+        //        customersQuery = customersQuery.Where(c => c.Name.Contains(query));
+
+        //    var customerDtos = customersQuery
+        //        .ToList()
+        //        .Select(Mapper.Map<Customer, CustomerDto>);
+
+        //    //return _context.Customers.ToList().Select(Mapper.Map<Customer, CustomerDto>);
+        //    return Ok(customerDtos);
+        //}
+
 
 
         ///GET/api/customers/1

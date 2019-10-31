@@ -20,17 +20,33 @@ namespace Vidla.Controllers.API
             _context = new ApplicationDbContext ();
         }
 
-     
+
 
         //GET/api/movies
-        public IHttpActionResult GetMovies() 
-        {
-            var movies = _context.Movies
-                            .Include(c => c.Genre)
-                            .ToList()
-                            .Select(Mapper.Map<Movie, MovieDto>);
+        //public IHttpActionResult GetMovies() 
+        //{
+        //    var movies = _context.Movies
+        //                    .Include(c => c.Genre)
+        //                    .ToList()
+        //                    .Select(Mapper.Map<Movie, MovieDto>);
 
-            return Ok(movies);
+        //    return Ok(movies);
+        //}
+
+        //HOW MOSH HAS THIS CODE
+
+        public IEnumerable<MovieDto> GetMovies(string query = null)
+        {
+            var moviesQuery = _context.Movies
+                .Include(m => m.Genre)
+                .Where(m => m.NumberAvailable > 0);
+
+            if (!String.IsNullOrWhiteSpace(query))
+                moviesQuery = moviesQuery.Where(m => m.Name.Contains(query));
+
+            return moviesQuery
+                .ToList()
+                .Select(Mapper.Map<Movie, MovieDto>);
         }
 
 
