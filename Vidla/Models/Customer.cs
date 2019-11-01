@@ -25,5 +25,7 @@ namespace Vidla.Models
         [Min18YearsIfAMember]
         public DateTime? BirthDate { get; set; }
 
+        
+
     }
 }

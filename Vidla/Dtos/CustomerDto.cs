@@ -27,5 +27,7 @@ namespace Vidla.Dtos
         [Display(Name = "Date of Birth")]
         //[Min18YearsIfAMember]
         public DateTime? BirthDate { get; set; }
+
+        
     }
 }
