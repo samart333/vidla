@@ -24,34 +24,34 @@ namespace Vidla.Controllers.API
 
 
         ////GET/api/customers
-        public IHttpActionResult GetCustomers()
-        {
-            var customerDtos = _context.Customers
-                .Include(c => c.MembershipType)
-                .ToList()
-                .Select(Mapper.Map<Customer, CustomerDto>);
-
-            //return _context.Customers.ToList().Select(Mapper.Map<Customer, CustomerDto>);
-            return Ok(customerDtos);
-        }
-
-        //HOW MOSH HAS THIS CODE 
-
-        //public IHttpActionResult GetCustomers(string query = null)
+        //public IHttpActionResult GetCustomers()
         //{
-        //    var customersQuery = _context.Customers
-        //          .Include(c => c.MembershipType);
-
-        //    if (!String.IsNullOrWhiteSpace(query))
-        //        customersQuery = customersQuery.Where(c => c.Name.Contains(query));
-
-        //    var customerDtos = customersQuery
+        //    var customerDtos = _context.Customers
+        //        .Include(c => c.MembershipType)
         //        .ToList()
         //        .Select(Mapper.Map<Customer, CustomerDto>);
 
         //    //return _context.Customers.ToList().Select(Mapper.Map<Customer, CustomerDto>);
         //    return Ok(customerDtos);
         //}
+
+        //HOW MOSH HAS THIS CODE 
+
+        public IHttpActionResult GetCustomers(string query = null)
+        {
+            var customersQuery = _context.Customers
+                  .Include(c => c.MembershipType);
+
+            if (!String.IsNullOrWhiteSpace(query))
+                customersQuery = customersQuery.Where(c => c.Name.Contains(query));
+
+            var customerDtos = customersQuery
+                .ToList()
+                .Select(Mapper.Map<Customer, CustomerDto>);
+
+            //return _context.Customers.ToList().Select(Mapper.Map<Customer, CustomerDto>);
+            return Ok(customerDtos);
+        }
 
 
 

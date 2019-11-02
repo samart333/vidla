@@ -28,17 +28,21 @@ namespace Vidla.Controllers
         [HttpPost]
         public IHttpActionResult CreateNewRental(NewRentalDto newRental)
         {
-            
+       
             //customer that does the request
             var customer = _context.Customers.Single(c => c.Id == newRental.CustomerId);
+            
             
 
             //List of requested movies found in database
             var movies = _context.Movies.Where(movie => newRental.MovieIds.Contains(movie.Id)).ToList();
 
+           
 
             foreach (var movie in movies)
             {
+                
+
                 if (movie.NumberAvailable == 0)
                     return BadRequest("This movie is not available.");
 
